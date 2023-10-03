@@ -308,6 +308,13 @@ void Array::fill(const Variant &p_value) {
 	_p->array.fill(value);
 }
 
+void Array::erase_swap(const Variant &p_value) {
+	ERR_FAIL_COND_MSG(_p->read_only, "Array is in read-only state.");
+	Variant value = p_value;
+	ERR_FAIL_COND(!_p->typed.validate(value, "erase_swap"));
+	_p->array.erase_swap(value);
+}
+
 void Array::erase(const Variant &p_value) {
 	ERR_FAIL_COND_MSG(_p->read_only, "Array is in read-only state.");
 	Variant value = p_value;
@@ -405,6 +412,11 @@ bool Array::has(const Variant &p_value) const {
 void Array::remove_at(int p_pos) {
 	ERR_FAIL_COND_MSG(_p->read_only, "Array is in read-only state.");
 	_p->array.remove_at(p_pos);
+}
+
+void Array::remove_at_swap(int p_pos) {
+	ERR_FAIL_COND_MSG(_p->read_only, "Array is in read-only state.");
+	_p->array.remove_at_swap(p_pos);
 }
 
 void Array::set(int p_idx, const Variant &p_value) {

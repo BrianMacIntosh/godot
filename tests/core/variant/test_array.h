@@ -109,6 +109,28 @@ TEST_CASE("[Array] resize(), insert(), and erase()") {
 	CHECK(int(arr[0]) == 1);
 }
 
+TEST_CASE("[Array] erase_swap()") {
+	Array arr;
+	arr.push_back(1);
+	arr.push_back(2);
+	arr.push_back(3);
+	arr.push_back(4);
+	arr.erase_swap(2);
+	CHECK(int(arr[0]) == 1);
+	CHECK(int(arr[1]) == 4);
+	CHECK(int(arr[2]) == 3);
+	arr.erase_swap(1);
+	CHECK(int(arr[0]) == 3);
+	CHECK(int(arr[1]) == 4);
+	arr.erase_swap(5);
+	CHECK(int(arr[0]) == 3);
+	CHECK(int(arr[1]) == 4);
+	arr.erase_swap(4);
+	CHECK(int(arr[0]) == 3);
+	arr.erase_swap(3);
+	CHECK(arr.size() == 0);
+}
+
 TEST_CASE("[Array] front() and back()") {
 	Array arr;
 	arr.push_back(1);
@@ -145,6 +167,30 @@ TEST_CASE("[Array] remove_at()") {
 	arr.remove_at(0);
 	ERR_PRINT_ON;
 
+	CHECK(arr.size() == 0);
+}
+
+TEST_CASE("[Array] remove_at_swap()") {
+	Array arr;
+	arr.push_back(1);
+	arr.push_back(2);
+	arr.push_back(3);
+	arr.push_back(4);
+	arr.remove_at_swap(1);
+	CHECK(int(arr[0]) == 1);
+	CHECK(int(arr[1]) == 4);
+	CHECK(int(arr[2]) == 3);
+	arr.remove_at_swap(0);
+	CHECK(int(arr[0]) == 3);
+	CHECK(int(arr[1]) == 4);
+	ERR_PRINT_OFF;
+	arr.remove_at_swap(5);
+	ERR_PRINT_ON;
+	CHECK(int(arr[0]) == 3);
+	CHECK(int(arr[1]) == 4);
+	arr.remove_at_swap(1);
+	CHECK(int(arr[0]) == 3);
+	arr.remove_at_swap(0);
 	CHECK(arr.size() == 0);
 }
 

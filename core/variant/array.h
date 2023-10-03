@@ -74,6 +74,7 @@ public:
 
 	Error insert(int p_pos, const Variant &p_value);
 	void remove_at(int p_pos);
+	void remove_at_swap(int p_pos);
 	void fill(const Variant &p_value);
 
 	Variant front() const;
@@ -93,6 +94,7 @@ public:
 	bool has(const Variant &p_value) const;
 
 	void erase(const Variant &p_value);
+	void erase_swap(const Variant &p_value);
 
 	void push_front(const Variant &p_value);
 	Variant pop_back();

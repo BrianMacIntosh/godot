@@ -79,6 +79,15 @@ public:
 		}
 		return false;
 	}
+	void remove_at_swap(int p_index) { _cowdata.remove_at_swap(p_index); }
+	_FORCE_INLINE_ bool erase_swap(const T &p_val) {
+		int idx = find(p_val);
+		if (idx >= 0) {
+			remove_at_swap(idx);
+			return true;
+		}
+		return false;
+	}
 
 	void reverse();
 
