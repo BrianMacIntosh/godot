@@ -67,6 +67,7 @@ private:
 
 public:
 	bool push_back(T p_elem);
+	bool push_back_unique(T p_elem);
 	_FORCE_INLINE_ bool append(const T &p_elem) { return push_back(p_elem); } //alias
 	void fill(T p_elem);
 
@@ -327,6 +328,15 @@ bool Vector<T>::push_back(T p_elem) {
 	set(size() - 1, p_elem);
 
 	return false;
+}
+
+template <class T>
+bool Vector<T>::push_back_unique(T p_elem) {
+	if (!has(p_elem)) {
+		return push_back(p_elem);
+	} else {
+		return false;
+	}
 }
 
 template <class T>

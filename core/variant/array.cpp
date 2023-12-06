@@ -270,6 +270,12 @@ void Array::push_back(const Variant &p_value) {
 	_p->array.push_back(value);
 }
 
+void Array::push_back_unique(const Variant &p_value) {
+	if (!has(p_value)) {
+		push_back(p_value);
+	}
+}
+
 void Array::append_array(const Array &p_array) {
 	ERR_FAIL_COND_MSG(_p->read_only, "Array is in read-only state.");
 
